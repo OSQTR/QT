@@ -59,7 +59,7 @@ function TaskBar({ data }) {
   let chapters;
 
   // 한국어 버전
-  if (sc == ec) {
+  if (sc === ec) {
     chapters = " " + sc + " 장 " + sv + " ~ " + ev + " 절";
   } else {
     chapters = " " + sc + " 장 " + sv + " 절 ~ " + ec + " 장 " + ev + " 절";

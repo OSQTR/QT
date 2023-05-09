@@ -1,10 +1,21 @@
 import styled from "styled-components";
 
 const TextBody = styled.div`
-  padding: 50px 20px 120px 20px;
+  padding: 80px 20px 120px 20px;
   color: white;
   max-width: 600px;
   margin: auto;
+`;
+
+const DivBar = styled.div`
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    margin: 10px;
+    font-size: 2em;
+  }
 `;
 
 function Stems({ data }) {
@@ -22,7 +33,9 @@ function Stems({ data }) {
         <div key={data.id}>
           <h2>Stems</h2>
           <p dangerouslySetInnerHTML={{ __html: stems }}></p>
-          <br />
+          <DivBar>
+            ◆<span>❖</span>◆
+          </DivBar>
           <h2>People for your Meditation</h2>
           <p dangerouslySetInnerHTML={{ __html: med }}></p>
         </div>
