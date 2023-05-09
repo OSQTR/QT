@@ -10,6 +10,7 @@ import Stems from "./components/stemsBody";
 import ModalBasic from "./components/modalBasic";
 import CoList from "./components/commentList";
 import NotFound from "./components/notFound";
+import Home from "./components/home";
 
 const BgImg = styled.img`
   position: fixed;
@@ -82,6 +83,9 @@ function App() {
             path="/"
             element={<BibleBody data={data} imageUrl={Image} />}
           ></Route>
+          <Route path="/Home" element={<Home />}>
+            <Route></Route>
+          </Route>
           <Route path="/stems" element={<Stems data={data} />}></Route>
           <Route path="/etc" element={<CoList comments={comments} />}></Route>
           <Route path="/*" element={<NotFound />}></Route>

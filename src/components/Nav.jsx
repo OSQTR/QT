@@ -22,64 +22,6 @@ const IcoComm = styled(Comm)`
   stroke: white;
 `;
 
-const Navbar = ({ showModal }) => {
-  return (
-    <>
-      <NavWrapper>
-        <NavItem to="/">
-          <IcoBook />
-        </NavItem>
-        <NavItem to="/stems">
-          <IcoStems />
-        </NavItem>
-        <NavItem to="/etc">
-          <IcoComm />
-        </NavItem>
-        <NavBtn onClick={showModal}>
-          <IcoShare />
-        </NavBtn>
-      </NavWrapper>
-
-      <FloatNavWrap>
-        <NavItem to="/">
-          <IcoBook />
-        </NavItem>
-        <NavItem to="/stems">
-          <IcoStems />
-        </NavItem>
-        <NavItem to="/etc">
-          <IcoComm />
-        </NavItem>
-        <NavBtn onClick={showModal}>
-          <IcoShare />
-        </NavBtn>
-      </FloatNavWrap>
-    </>
-  );
-};
-
-const FloatNavWrap = styled.div`
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  left: 50vw;
-  transform: translateX(+310px);
-  top: 80px;
-  width: 65px;
-  height: 240px;
-  border-radius: 31px;
-  background-color: #0000003b;
-  z-index: 2;
-  backdrop-filter: blur(15px);
-  box-shadow: rgb(0 0 0 / 10%) 1px 2px 5px 3px;
-
-  @media (orientation: portrait) {
-    display: none;
-  }
-`;
-
 const NavWrapper = styled.nav`
   display: flex;
   justify-content: space-evenly;
@@ -150,5 +92,76 @@ const NavBtn = styled.div`
     }
   }
 `;
+
+const FloatNavWrap = styled.div`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  left: 50vw;
+  transform: translateX(+310px);
+  top: 80px;
+  width: 65px;
+  height: 240px;
+  border-radius: 31px;
+  background-color: #0000003b;
+  z-index: 2;
+  backdrop-filter: blur(15px);
+  box-shadow: rgb(0 0 0 / 10%) 1px 2px 5px 3px;
+
+  @media (orientation: portrait) {
+    display: none;
+  }
+`;
+
+const navItem = [
+  {
+    id: 1,
+    title: "Book",
+    path: "/",
+    sym: <IcoBook />,
+  },
+  {
+    id: 2,
+    title: "stems",
+    path: "/stems",
+    sym: <IcoStems />,
+  },
+  {
+    id: 3,
+    title: "etc",
+    path: "/etc",
+    sym: <IcoComm />,
+  },
+];
+
+const Navbar = ({ showModal }) => {
+  return (
+    <>
+      <NavWrapper>
+        {navItem.map((item) => (
+          <NavItem key={item.id} to={item.path}>
+            {item.sym}
+          </NavItem>
+        ))}
+        <NavBtn onClick={showModal}>
+          <IcoShare />
+        </NavBtn>
+      </NavWrapper>
+
+      <FloatNavWrap>
+        {navItem.map((item) => (
+          <NavItem key={item.id} to={item.path}>
+            {item.sym}
+          </NavItem>
+        ))}
+        <NavBtn onClick={showModal}>
+          <IcoShare />
+        </NavBtn>
+      </FloatNavWrap>
+    </>
+  );
+};
 
 export default Navbar;
