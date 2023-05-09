@@ -1,0 +1,34 @@
+import styled from "styled-components";
+
+const TextBody = styled.div`
+  padding: 50px 20px 120px 20px;
+  color: white;
+  max-width: 600px;
+  margin: auto;
+`;
+
+function Stems({ data }) {
+  const stemsText =
+    data.attributes?.Stems.replace(/\\r\\n/gi, "<br/><br/>") || "";
+  const stems = stemsText.replace(/\d+/g, "<span>$&</span>");
+
+  const medText =
+    data.attributes?.Reference.replace(/\\r\\n/gi, "<br/><br/>") || "";
+  const med = medText.replace(/\d+/g, "<span>$&</span>");
+
+  return (
+    <TextBody>
+      {
+        <div key={data.id}>
+          <h2>Stems</h2>
+          <p dangerouslySetInnerHTML={{ __html: stems }}></p>
+          <br />
+          <h2>People for your Meditation</h2>
+          <p dangerouslySetInnerHTML={{ __html: med }}></p>
+        </div>
+      }
+    </TextBody>
+  );
+}
+
+export default Stems;

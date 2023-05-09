@@ -1,0 +1,29 @@
+{
+  "data": {
+    "id": 1,
+    "attributes": {
+      "_comment": {
+        "1": "json 형식을 설명하는 오브젝트입니다. _comment 라는 항목은 삭제해도 됩니다.",
+        "2": "Book은 성경, StartChapter는 시작장, StartVerse는 시작절, EndChapter는 끝장, EndVerse는 끝절입니다. 작은 수가 들어갑니다.",
+        "3": "제목과 책을 제외한 모든 텍스트는 마크다운 형식으로 들어갑니다. `\n`은 자동으로 `<br>`로 변환되는 함수가 앱에서 실행될 예정입니다.",
+        "4": "createdAt, updatedAt 항목은 데이가 생성된 날짜와 DB에 등록확인된 날짜입니다. 더미데이터를 넣으셔도 됩니다.",
+        "5": "data 안에 id와 attributes가 있어야 하고, 실제 데이터 오브젝트는 attributes안에 전부 구성하면 됩니다.",
+        "6": "추가로 필요한 데이터를 구성하셔도 됩니다만, 반드시 attributes안에 구성해야 합니다.",
+        "7": "예시로, 유튜브 링크나, 영상 링크가 필요하다면, VidUrl 또는 Video 이런식으로 써주시면 됩니다."
+      },
+      "Title": "제목입니다.",
+      "Book": "예시)요한복음",
+      "StartChapter": 1,
+      "StartVerse": 1,
+      "EndChapter": 1,
+      "EndVerse": 18,
+      "BodyText": "성경 본문입니다. 마크다운 형식입니다.",
+      "Meditation": "본문 해설입니다. 마크다운 형식입니다.",
+      "Stems": "말씀 요약 내용입니다. 마크다운 형식입니다.",
+      "Reference": "더 깊은 묵상 내용입니다. 마크다운 형식입니다.",
+      "createdAt": "2023-04-07T05:27:56.553Z",
+      "updatedAt": "2023-04-09T14:57:01.016Z"
+    }
+  },
+  "meta": {}
+}
