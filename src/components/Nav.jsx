@@ -1,4 +1,4 @@
-import React from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as Book } from "../img/book.svg";
@@ -147,6 +147,9 @@ const navItem = [
   },
 ];
 
+const currentPath = window.location.pathname;
+const isHome = currentPath === "/home";
+
 const Navbar = ({ showModal }) => {
   return (
     <>
@@ -162,11 +165,23 @@ const Navbar = ({ showModal }) => {
       </NavWrapper>
 
       <FloatNavWrap>
-        {navItem.map((item) => (
+        {/* {navItem.map((item) => (
           <NavItem key={item.id} to={item.path}>
             {item.sym}
           </NavItem>
         ))}
+         */}
+        {isHome
+          ? navItem.map((item) => (
+              <NavItem key={item.id} to={item.path}>
+                {item.sym}
+              </NavItem>
+            ))[1]
+          : navItem.map((item) => (
+              <NavItem key={item.id} to={item.path}>
+                {item.sym}
+              </NavItem>
+            ))}
         <NavBtn onClick={showModal}>
           <IcoShare />
         </NavBtn>
