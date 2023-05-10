@@ -5,6 +5,7 @@ import { ReactComponent as Book } from "../img/book.svg";
 import { ReactComponent as Stem } from "../img/stems.svg";
 import { ReactComponent as Share } from "../img/share.svg";
 import { ReactComponent as Comm } from "../img/comment.svg";
+import { ReactComponent as Home } from "../img/home.svg";
 
 const IcoBook = styled(Book)`
   stroke: white;
@@ -19,6 +20,10 @@ const IcoShare = styled(Share)`
 `;
 
 const IcoComm = styled(Comm)`
+  stroke: white;
+`;
+
+const IcoHome = styled(Home)`
   stroke: white;
 `;
 
@@ -103,7 +108,7 @@ const FloatNavWrap = styled.div`
   transform: translateX(+310px);
   top: 80px;
   width: 65px;
-  height: 240px;
+  height: 300px;
   border-radius: 31px;
   background-color: #0000003b;
   z-index: 2;
@@ -118,18 +123,24 @@ const FloatNavWrap = styled.div`
 const navItem = [
   {
     id: 1,
+    title: "Home",
+    path: "/home",
+    sym: <IcoHome />,
+  },
+  {
+    id: 2,
     title: "Book",
     path: "/",
     sym: <IcoBook />,
   },
   {
-    id: 2,
+    id: 3,
     title: "stems",
     path: "/stems",
     sym: <IcoStems />,
   },
   {
-    id: 3,
+    id: 4,
     title: "etc",
     path: "/etc",
     sym: <IcoComm />,
