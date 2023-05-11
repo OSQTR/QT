@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import "./App.css";
 import Navbar from "./components/Nav";
@@ -27,6 +27,14 @@ const BgImg = styled.img`
     height: 100vh;
   }
 `;
+
+function getDayOfYear(date) {
+  const startOfYear = new Date(date.getFullYear(), 0, 0);
+  const diff = date - startOfYear;
+  const oneDay = 1000 * 60 * 60 * 24;
+  const dayOfYear = Math.floor(diff / oneDay);
+  return dayOfYear;
+}
 
 function App() {
   //본문데이터
@@ -56,14 +64,6 @@ function App() {
     fetchData();
   }, []);
 
-  function getDayOfYear(date) {
-    const startOfYear = new Date(date.getFullYear(), 0, 0);
-    const diff = date - startOfYear;
-    const oneDay = 1000 * 60 * 60 * 24;
-    const dayOfYear = Math.floor(diff / oneDay);
-    return dayOfYear;
-  }
-
   //모달
   const [modalOpen, setModalOpen] = useState(false);
   const showModal = () => {
@@ -75,20 +75,18 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar showModal={showModal} />
-        {modalOpen && <ModalBasic setModalOpen={setModalOpen} />}
         <TaskBar data={data} />
+        <Navbar showModal={showModal} />
         <Routes>
+          {modalOpen && <ModalBasic setModalOpen={setModalOpen} />}
+          <Route path="/Home" element={<Home />} />
           <Route
             path="/"
             element={<BibleBody data={data} imageUrl={Image} />}
-          ></Route>
-          <Route path="/Home" element={<Home />}>
-            <Route></Route>
-          </Route>
-          <Route path="/stems" element={<Stems data={data} />}></Route>
-          <Route path="/etc" element={<CoList comments={comments} />}></Route>
-          <Route path="/*" element={<NotFound />}></Route>
+          />
+          <Route path="/stems" element={<Stems data={data} />} />
+          <Route path="/etc" element={<CoList comments={comments} />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
       <BgImg src={bg}></BgImg>

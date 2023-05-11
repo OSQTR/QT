@@ -101,6 +101,7 @@ const NavBtn = styled.div`
 const FloatNavWrap = styled.div`
   position: fixed;
   display: flex;
+  /* display: ${(props) => (props.isHomePath ? "none" : "flex")}; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -147,10 +148,10 @@ const navItem = [
   },
 ];
 
-const currentPath = window.location.pathname;
-const isHome = currentPath === "/home";
-
 const Navbar = ({ showModal }) => {
+  const location = useLocation();
+  const isPathHome = location.pathname === "/home";
+
   return (
     <>
       <NavWrapper>
@@ -164,24 +165,12 @@ const Navbar = ({ showModal }) => {
         </NavBtn>
       </NavWrapper>
 
-      <FloatNavWrap>
-        {/* {navItem.map((item) => (
+      <FloatNavWrap style={{ display: isPathHome ? "none" : "flex" }}>
+        {navItem.map((item) => (
           <NavItem key={item.id} to={item.path}>
             {item.sym}
           </NavItem>
         ))}
-         */}
-        {isHome
-          ? navItem.map((item) => (
-              <NavItem key={item.id} to={item.path}>
-                {item.sym}
-              </NavItem>
-            ))[1]
-          : navItem.map((item) => (
-              <NavItem key={item.id} to={item.path}>
-                {item.sym}
-              </NavItem>
-            ))}
         <NavBtn onClick={showModal}>
           <IcoShare />
         </NavBtn>
